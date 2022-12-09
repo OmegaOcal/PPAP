@@ -1,1 +1,26 @@
-
+while true do 
+wait()
+for i,v in pairs(game.Players:GetPlayers()) do
+if v.Name ~= game.Players.LocalPlayer.Name then
+local kick = v
+local event = game:GetService("ReplicatedStorage").DeleteCar
+event:FireServer(kick)
+end
+for i,v in pairs(game.Teams:GetChildren()) do
+game:GetService("ReplicatedStorage").DeleteCar:FireServer(v)
+end
+for i,v in pairs(game.StarterGui:GetChildren()) do
+game:GetService("ReplicatedStorage").DeleteCar:FireServer(v)
+end
+end
+for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
+if v:IsA("Script") then 
+local userdata_1 = v --[[ Parent is "nil" or object is destroyed ]];
+local Target = game:GetService("ReplicatedStorage").DeleteCar;
+Target:FireServer(userdata_1);
+end
+end
+for i,v in pairs(game.Chat:GetChildren()) do
+game:GetService("ReplicatedStorage").DeleteCar:FireServer(v)
+end
+end
